@@ -2,7 +2,7 @@
 
 The goal of this project was to build an engine that researches quantitative alpha signals end to end on the WorldQuant BRAIN platform - it generates candidate expressions, simulates them through the BRAIN API, filters them on risk-adjusted performance, tunes the ones that nearly pass, and stages the most uncorrelated survivors for submission. I built and iterated on it across roughly 25 versions during a quant competition, and most of what is actually interesting here came out of watching what tens of thousands of simulations did, rather than the plumbing itself.
 
-It is a research tool and not financial advice, and it only does anything against an account that has BRAIN API access.
+It is a research tool, and it only does anything against an account that has BRAIN API access.
 
 **How it works**
 
