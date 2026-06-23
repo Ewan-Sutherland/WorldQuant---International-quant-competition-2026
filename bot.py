@@ -370,13 +370,13 @@ class AlphaBot:
                     result = pipeline.run()
                     print(f"[SUBMIT_PIPELINE] Coordinated done: {result}")
                 else:
-                    # Non-coordinated bot (Tom/Luca) - use old pipeline
+                    # non-coordinated bot - use old pipeline
                     print(f"\n[SUBMIT_PIPELINE] Scheduled submission window - starting pipeline...")
                     pipeline = SubmitPipeline(self.storage, self.client, config)
                     result = pipeline.run()
                     print(f"[SUBMIT_PIPELINE] Done: {result}")
 
-                # v7.2: Coordinator checks teammate scores (Tom/Luca) after coordinated submission
+                # v7.2: Coordinator checks teammate scores after coordinated submission
                 if getattr(config, "CHECK_TEAMMATE_SCORES", False):
                     teammates = getattr(config, "TEAMMATE_OWNERS", [])
                     if teammates:

@@ -40,7 +40,7 @@ DEFAULT_BASE_FAMILY_WEIGHTS = {
     "fundamental_scores": 3.0,  # fscore data = unique data category
     "size_value": 2.5,  # Fundamental ratios = different from price signals
     # v5.8: Multi-factor combinations - HIGHEST PRIORITY
-    "combo_factor": 4.0,  # Griff's proven strategy (S=2.15)
+    "combo_factor": 4.0,  # proven combo strategy (S=2.15)
     # v5.9: NEW families - model77 pre-computed anomalies (HIGHEST PRIORITY)
     "model77_anomaly": 5.0,   # 168 untapped pre-computed academic anomaly fields
     "model77_combo": 4.5,     # model77 + price reversion combos
@@ -844,7 +844,7 @@ class AlphaGenerator:
                         "risk_treynor"},
         "combo_proven": {"signal_combo", "combo_factor", "wild_combos", "vol_regime",
                         "wq_proven", "tutorial_proven", "high_sharpe", "evolved",
-                        "griff_multi_factor", "griff_intraday"},
+                        "combo_multi_factor", "combo_intraday"},
         "novel_operators": {"corr_pipeline", "regression_alpha", "nonlinear_power",
                            "pipeline_select"},
         "research_composites": {
@@ -1359,7 +1359,7 @@ class AlphaGenerator:
 
         if "{n}" in template:
             if is_combo:
-                # Fundamental component lookback (Griff used 30-40)
+                # Fundamental component lookback (30-40)
                 p["n"] = self.rng.choice([20, 30, 40, 60])
             elif use_fund_params:
                 p["n"] = self.rng.choice(getattr(templates_mod, "FUNDAMENTAL_PARAM_RANGES", {}).get("n", self._grid("n")))
@@ -1367,7 +1367,7 @@ class AlphaGenerator:
                 p["n"] = self.rng.choice(self._grid("n"))
         if "{m}" in template:
             if is_combo:
-                # Price reversion component (Griff used 3-5)
+                # Price reversion component (3-5)
                 p["m"] = self.rng.choice([3, 5, 10])
             elif use_fund_params:
                 p["m"] = self.rng.choice(getattr(templates_mod, "FUNDAMENTAL_PARAM_RANGES", {}).get("m", self._grid("m")))
